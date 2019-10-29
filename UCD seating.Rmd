@@ -1,6 +1,6 @@
 ---
 title: "Student Sit In"
-author: "your name here"
+author: "Erika Munoz"
 date: "10/26/2019"
 output: 
   html_document:
@@ -48,44 +48,45 @@ names(UCDdataframe)
 <!--  describe analysis methods here 
 what are the variable types, and indicate gaphical, numerical, and inferential methods appropriate
 for this question  !--> 
-
+We have two categorigal variables, so we will be using bar charts and tables to summarize the data and a chi aquare test for inference.
 
 ## Data summary
 
 **Graphical summary**
 put the graphic description of the data here
 
-```{r}
-
+```{r}               
+barchartGC(~seat+major,data=UCDdataframe,type="percent",xlab="seating",main="Seating VS. Major")
 ```
 
 Explain what the graph shows
-
+The graph shows us that the majority of the liberal arts student sit in the front of the class and the majority of the class that are non liberal art students sit in the back of the classroom.
 
 **Numerical summary**
 put numerical summary here
 
 ```{r}
-
+table1 = xtabs(formula=~seat+major,data=UCDdataframe)
+    rowPerc(table1)
 ```
 
 Explain what the numeric summary says
-
+The Numerical summary explains that there are 91.89 percent of nonliberal arts students thst sit in the back of the classroom rather than the 21.95 percent of liberal art students that sit in the front of the class. 
 ## Inferential Results
 put the inferential test for the the null hypothesis here
 
 ```{r}
-
+chisqtestGC(table1)
 ```
 
 what is the p-value?
-
+The P-value is 0.2173 which means that we fail to reject the null hypothesis. 
 ## Results and conclusions
 
 <!-- explain-- is there evidence that certain majors tend to sit in particular areas of the class?  Can the results of this test be generalized to all majors in all universities? !-->
 
 explain the result, can the result be generalized?
-
+No, we are not able to generalize the result because we failed to reject the null hypothesis "$H_0$: there is no relationship between one's major and where one sits in a class" we can conclude that there can not be a generalization made with preference of seating and majors. The bar chart shows us that the liberal art students have a low percantage differenece of where they are sitting in the class, the nonliberal art students also have low percentage difference of where they are sitting in the class.  
 <!--
 push results to your github account, turn in the URL
 
